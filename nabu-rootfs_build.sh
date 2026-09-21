@@ -41,7 +41,7 @@ fi
 
 
 #chroot installation
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:\$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 export DEBIAN_FRONTEND=noninteractive
 
 chroot rootdir apt update
@@ -107,4 +107,4 @@ rm -d rootdir
 
 echo 'cmdline for legacy boot: "root=PARTLABEL=linux"'
 
-7zz a rootfs.7z rootfs.img
+if command -v 7zz >/dev/null 2>&1; then 7zz a rootfs.7z rootfs.img; else 7z a rootfs.7z rootfs.img; fi
